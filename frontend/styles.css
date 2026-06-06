@@ -1,0 +1,194 @@
+/* ── Reset & base ───────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --blue: #3b82f6;
+    --blue-dim: rgba(59, 130, 246, 0.15);
+    --blue-glow: rgba(59, 130, 246, 0.5);
+    --red: #ef4444;
+    --bg: #0a0a0a;
+    --surface: rgba(0, 0, 0, 0.8);
+    --text: #e2e8f0;
+    --radius: 12px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    overflow: hidden;
+    height: 100dvh;
+    width: 100dvw;
+    position: relative;
+}
+
+/* ── Decorative grid ────────────────────────────────────────── */
+.grid-overlay {
+    position: fixed;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ── Corner brackets ────────────────────────────────────────── */
+.corner {
+    position: fixed;
+    width: 28px;
+    height: 28px;
+    border: 2px solid var(--blue);
+    opacity: 0.5;
+    z-index: 25;
+}
+.corner.top-left    { top: 16px; left: 16px;  border-right: none; border-bottom: none; }
+.corner.top-right   { top: 16px; right: 16px; border-left: none;  border-bottom: none; }
+.corner.bottom-left { bottom: 16px; left: 16px;  border-right: none; border-top: none; }
+.corner.bottom-right{ bottom: 16px; right: 16px; border-left: none;  border-top: none; }
+
+/* ── Title ──────────────────────────────────────────────────── */
+.title {
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--blue);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 0 0 12px var(--blue-glow);
+    z-index: 30;
+    white-space: nowrap;
+}
+
+/* ── Status bar ─────────────────────────────────────────────── */
+.status-bar {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--surface);
+    border: 1px solid var(--blue);
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 30;
+    backdrop-filter: blur(10px);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+}
+
+.status-dot.active   { animation: pulse 2s infinite; }
+.status-dot.error    { background: var(--red); animation: none; }
+.status-dot.inactive { background: #64748b; animation: none; }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+}
+
+/* ── Viewport ───────────────────────────────────────────────── */
+.viewport {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+}
+
+video, canvas {
+    position: absolute;
+    border-radius: var(--radius);
+    box-shadow:
+        0 0 30px var(--blue-dim),
+        0 0 60px rgba(59, 130, 246, 0.05),
+        inset 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+video  { filter: brightness(0.92) contrast(1.08) saturate(0.85); }
+canvas { z-index: 10; background: transparent; }
+
+/* ── Detection count ────────────────────────────────────────── */
+.detection-count {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 18px;
+    background: var(--surface);
+    border: 1px solid var(--blue);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 30;
+    backdrop-filter: blur(10px);
+    transition: color 0.2s;
+}
+
+.detection-count.has-detections {
+    color: #fbbf24;
+    border-color: #fbbf24;
+    text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+/* ── Error banner ───────────────────────────────────────────── */
+.error-banner {
+    position: fixed;
+    bottom: 64px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid var(--red);
+    border-radius: var(--radius);
+    color: var(--red);
+    font-size: 0.8rem;
+    z-index: 30;
+    backdrop-filter: blur(10px);
+    max-width: 90vw;
+    text-align: center;
+    display: none;
+}
+
+.error-banner[aria-hidden="false"] { display: block; }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 600px) {
+    .title {
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    .corner {
+        width: 18px;
+        height: 18px;
+    }
+    .status-bar {
+        top: 10px;
+        right: 10px;
+        font-size: 0.6rem;
+        padding: 5px 10px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .status-dot { animation: none !important; }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time scorpion detection using YOLO and AI">
+    <title>Scorpion Detector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <div class="corner top-left" aria-hidden="true"></div>
+    <div class="corner top-right" aria-hidden="true"></div>
+    <div class="corner bottom-left" aria-hidden="true"></div>
+    <div class="corner bottom-right" aria-hidden="true"></div>
+
+    <header class="title" role="banner">Scorpion Detector</header>
+
+    <div class="status-bar" role="status" aria-live="polite">
+        <span class="status-dot" id="statusDot" aria-hidden="true"></span>
+        <span id="statusText">Connecting…</span>
+    </div>
+
+    <main class="viewport" role="main">
+        <video id="video" autoplay muted playsinline aria-label="Camera feed"></video>
+        <canvas id="canvas" aria-label="Detection overlay"></canvas>
+
+        <div class="detection-count" id="detectionCount" aria-live="polite" aria-label="Detection count">
+            0 detections
+        </div>
+    </main>
+
+    <div class="error-banner" id="errorBanner" role="alert" aria-hidden="true"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
