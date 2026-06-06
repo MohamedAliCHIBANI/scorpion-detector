@@ -1,0 +1,13 @@
+# YOLOv8 dataset configuration
+# Download the dataset from Kaggle (link in README.md) and unzip it
+# so that this file sits next to the images/ and labels/ directories.
+#
+# Adjust the paths below to match your local layout.
+
+path: ../dataset        # root of the dataset (relative to this file)
+train: images/train
+val:   images/val
+
+nc: 1
+names:
+  - scorpion
