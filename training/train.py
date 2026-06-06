@@ -14,7 +14,8 @@ Prerequisites
                train/   *.txt
                val/     *.txt
 
-3. Install dependencies:
+3. Download the dataset from https://www.kaggle.com/datasets/chibanimohamedali/scorpion-detection-dataset
+4. Install dependencies:
        pip install ultralytics
 
 Usage

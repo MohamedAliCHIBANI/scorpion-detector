@@ -103,7 +103,7 @@ Send JPEG frames as binary; receive detection JSON after each frame.
 
 The training dataset is publicly available on Kaggle:
 
-> **[Scorpion Detection Dataset](KAGGLE_DATASET_URL_PLACEHOLDER)**
+> **[Scorpion Detection Dataset](https://www.kaggle.com/datasets/chibanimohamedali/scorpion-detection-dataset)**
 
 See [docs/DATASET.md](docs/DATASET.md) for full documentation (classes, label format,
 image count, licence).

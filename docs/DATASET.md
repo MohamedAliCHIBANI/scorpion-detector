@@ -7,7 +7,7 @@ It contains **1,412 images** annotated in **YOLO TXT format** — the same forma
 directly by the Ultralytics training pipeline.
 
 The dataset is hosted publicly on Kaggle:
-> **[Scorpion Detection Dataset on Kaggle](KAGGLE_DATASET_URL_PLACEHOLDER)**
+> **[Scorpion Detection Dataset on Kaggle](https://www.kaggle.com/datasets/chibanimohamedali/scorpion-detection-dataset)**
 
 ---
 
@@ -92,5 +92,5 @@ If you use this dataset in research or a project, please cite:
 
 ```
 CHIBANI Mohamed Ali. Scorpion Detection Dataset (2024).
-Available on Kaggle: KAGGLE_DATASET_URL_PLACEHOLDER
+Available on Kaggle: https://www.kaggle.com/datasets/chibanimohamedali/scorpion-detection-dataset
 ```
